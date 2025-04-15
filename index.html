@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wait for it...</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    .countdown {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #00bcd4; /* A light cyan for hover effect */
+    }
+  </style>
+</head>
+<body>
+
+  <h1><a href="https://lacroixboards.com" target="_blank">Wait for it...</a></h1>
+  <div class="countdown" id="countdown">Loading...</div>
+
+  <script>
+    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date('2026-04-01T00:00:00Z');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerText = "It's time!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerText = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
